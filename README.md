@@ -27,11 +27,11 @@
 ## Estimates
 
 Lab #: 11
-Name of Feature:
-Estimate of Time Needed to Complete:
-Start Time:
-Finish Time:
-Actual Time Needed to Complete:
+Name of Feature: Frontend
+Estimate of Time Needed to Complete: 6 hours
+Start Time: 1300
+Finish Time:1720
+Actual Time Needed to Complete: 4.5 hours
 
 Lab #: 12
 Name of Feature:
