@@ -22,6 +22,7 @@
 27 March 2023 1400 - Frontend deployed via netlify, backend deployed via Render.
 27 March 2023 1445 - Initial setup complete. Pushing to Main.
 27 March 2023 1615 - Backend requirements met. Commencing front end requirements.
+27 March 2023 1720 - Frontend requirements met. Finished Lab 11.
 
 ## Estimates
 
