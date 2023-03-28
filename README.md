@@ -6,6 +6,9 @@
 
 ## Overview
 <!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for this class. (i.e. What's your problem domain?) -->
+Lab 11 Overview:
+
+Lab 12 Overview: We are going to add the ability for a user to add and delete book objects through the UI on our frontend. We will use CRUD, REST and Mongoose methods together.
 
 ## Getting Started
 <!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
@@ -23,6 +26,8 @@
 27 March 2023 1445 - Initial setup complete. Pushing to Main.
 27 March 2023 1615 - Backend requirements met. Commencing front end requirements.
 27 March 2023 1720 - Frontend requirements met. Finished Lab 11.
+28 March 2023 1300 - Starting Lab 12: Create/Delete of CRUD.
+28 March 2023 1630 - Finished Lab 12: lab requirements met.
 
 ## Estimates
 
@@ -34,11 +39,11 @@ Finish Time:1720
 Actual Time Needed to Complete: 4.5 hours
 
 Lab #: 12
-Name of Feature:
-Estimate of Time Needed to Complete:
-Start Time:
-Finish Time:
-Actual Time Needed to Complete:
+Name of Feature: Create and Delete of CRUD
+Estimate of Time Needed to Complete: 6 hours
+Start Time: 1300
+Finish Time: 1630
+Actual Time Needed to Complete: 3.5 hours
 
 Lab #: 13
 Name of Feature:
@@ -63,3 +68,4 @@ Actual Time Needed to Complete:
 
 ## Credit and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
+Backend Developer: Stephen Levesque
