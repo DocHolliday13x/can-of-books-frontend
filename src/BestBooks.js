@@ -56,7 +56,7 @@ class BestBooks extends React.Component {
     let bookObj = {
       title: event.target.title.value,
       description: event.target.description.value,
-      status: event.target.status.value,
+      status: event.target.status.checked,
     }
     console.log('New Book Form >>> ', bookObj);
     this.postBook(bookObj);
@@ -69,7 +69,7 @@ class BestBooks extends React.Component {
       let url = `${process.env.REACT_APP_SERVER}/books`
       // *** On a post, we pass in 2 args to axios, 1st is the url, 2nd is the data that will go on the request.body
       let createdBook = await axios.post(url, bookObj)
-
+      console.log(createdBook.data);
       this.setState({
         books: [...this.state.books, createdBook.data]
       })

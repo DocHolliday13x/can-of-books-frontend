@@ -23,6 +23,7 @@ class BookCarousel extends React.Component {
       status: event.target.status.checked,
     }
     this.props.updateBook(bookToUpdate);
+
   }
 
   render() {
