@@ -21,8 +21,6 @@ class BookCarousel extends React.Component {
       title: event.target.title.value,
       description: event.target.description.value,
       status: event.target.status.checked,
-      _id: this.props._id,
-      __v: this.props.__v
     }
     this.props.updateBook(bookToUpdate);
   }
@@ -41,8 +39,7 @@ class BookCarousel extends React.Component {
           <p>{this.props.status}</p>
         </Carousel.Caption>
 
-        <Button variant="secondary" id='deleteBtn' onClick={() => { this.props.deleteBooks(this.props._id) }}>Delete</Button>
-        <Button variant="primary" onClick={() => { this.setState({ showUpdateForm: true }) }}>Update</Button>
+        <Button variant="danger" id='deleteBtn' onClick={() => { this.props.deleteBooks(this.props._id) }}>Delete</Button>
         
         <Modal show={this.state.showUpdateForm} onHide={() => { this.setState({ showUpdateForm: false }) }}>
 
@@ -65,7 +62,6 @@ class BookCarousel extends React.Component {
                 <Form.Group controlId="status">
                   <Form.Check type="checkbox" label="available" />
                 </Form.Group>
-                <Button type="submit">Update Book</Button>
               </Form>
             </Container>
 

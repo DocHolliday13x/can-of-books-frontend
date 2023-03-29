@@ -28,7 +28,7 @@ class BestBooks extends React.Component {
     }
   }
 
-  deleteBooks = async (id) => {
+  deleteBook = async (id) => {
     try {
       let url = `${process.env.REACT_APP_SERVER}/books/${id}`
 
@@ -53,48 +53,25 @@ class BestBooks extends React.Component {
 
 
     // TODO: Build a book object based off of the form data
-    let newBook = {
+    let bookObj = {
       title: event.target.title.value,
       description: event.target.description.value,
       status: event.target.status.value,
     }
-    console.log('New Book Form >>> ', newBook);
-    this.postBook(newBook);
+    console.log('New Book Form >>> ', bookObj);
+    this.postBook(bookObj);
   }
 
   // *** HANDLER 2 - POST TO THE DATABASE ***
   postBook = async (bookObj) => {
     try {
       // TODO: build the url, use axios and add the cat
-
       let url = `${process.env.REACT_APP_SERVER}/books`
-
       // *** On a post, we pass in 2 args to axios, 1st is the url, 2nd is the data that will go on the request.body
       let createdBook = await axios.post(url, bookObj)
 
       this.setState({
         books: [...this.state.books, createdBook.data]
-      })
-
-    } catch (error) {
-      console.log(error.message)
-    }
-  }
-
-  updatedBooks = async (bookToUpdate) => {
-    try {
-      let url = `${process.env.REACT_APP_SERVER}/books/${bookToUpdate._id}`
-
-      let updatedBook = await axios.put(url, bookToUpdate);
-
-      let updatedBookArr = this.state.books.map(existingBook => {
-        return existingBook._id === bookToUpdate._id
-          ? updatedBook.data
-          : existingBook
-      });
-
-      this.setState({
-        books: updatedBookArr
       })
 
     } catch (error) {
@@ -129,8 +106,6 @@ class BestBooks extends React.Component {
                       description={book.description}
                       status={book.status}
                       deleteBooks={this.deleteBooks}
-                      _id={book._id}
-                      updateBooks={this.updateBooks}
                     />
                   </Carousel.Item>
                 )
