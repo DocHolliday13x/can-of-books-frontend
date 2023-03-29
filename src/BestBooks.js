@@ -29,6 +29,7 @@ class BestBooks extends React.Component {
   }
 
   deleteBook = async (id) => {
+    console.log('Did this fire?');
     try {
       let url = `${process.env.REACT_APP_SERVER}/books/${id}`
 
@@ -105,7 +106,8 @@ class BestBooks extends React.Component {
                       title={book.title}
                       description={book.description}
                       status={book.status}
-                      deleteBooks={this.deleteBooks}
+                      deleteBooks={this.deleteBook(book._id)}
+                      _id={book._id}
                     />
                   </Carousel.Item>
                 )
