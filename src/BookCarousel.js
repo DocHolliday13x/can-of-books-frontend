@@ -40,6 +40,7 @@ class BookCarousel extends React.Component {
           <p>{this.props.description}</p>
           <p>{this.props.status}</p>
         <Button variant="danger" id='deleteBtn' onClick={() => { this.props.deleteBook(this.props._id) }}>Delete</Button>
+        <Button variant="success" id='updateBtn' onClick={() => { this.props.updateBook(this.props._id)}}>Update</Button>
         </Carousel.Caption>
 
         <Modal show={this.state.showUpdateForm} onHide={() => { this.setState({ showUpdateForm: false }) }}>
