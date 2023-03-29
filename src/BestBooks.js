@@ -29,6 +29,7 @@ class BestBooks extends React.Component {
   }
 
   deleteBook = async (id) => {
+    console.log('Did this fire?');
     try {
       let url = `${process.env.REACT_APP_SERVER}/books/${id}`
 
