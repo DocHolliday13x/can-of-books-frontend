@@ -131,3 +131,30 @@ class BestBooks extends React.Component {
 
 
 export default BestBooks;
+
+
+
+// *** UPDATE CATS IN STATE USING AXIOS TO HIT BACKEND ***
+updateCat = async (catObjToUpdate) => {
+
+  try {
+    //TODO: url for axios
+    let url = `${process.env.REACT_APP_SERVER}/cats/${catObjToUpdate._id}`
+  
+    let updatedCat = await axios.put(url, catObjToUpdate._id)
+  
+    //TODO: Set state with the return from axios
+    let updatedCatArray = this.state.cats.map(existingCat => {
+      return existingCat._id === catObjToUpdate._id
+      ? updatedCat.data
+      : existingCat
+    })
+  
+    this.setState({
+      cats: updatedCatArray
+    })
+    
+  } catch (error) {
+    console.log(error.message);
+  }
+}
