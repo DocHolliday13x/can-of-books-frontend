@@ -22,12 +22,12 @@ class BestBooks extends React.Component {
       this.setState({
         books: bookData.data
       })
-
+      
     } catch (error) {
       console.log(error.response);
     }
   }
-
+  
   deleteBook = async (id) => {
     console.log('Did this fire?');
     try {
@@ -37,13 +37,38 @@ class BestBooks extends React.Component {
 
       // TODO: update state to remove deleted books
       let updatedBooks = this.state.books.filter(book => book._id !== id);
-
+      
       this.setState({
         books: updatedBooks,
       })
-
+      
     } catch (error) {
       console.log(error.response);
+    }
+  }
+  
+  // *** UPDATE BOOK IN STATE USING AXIOS TO HIT BACKEND ***
+  updateBook = async (bookObjToUpdate) => {
+  
+    try {
+      //TODO: url for axios
+      let url = `${process.env.REACT_APP_SERVER}/books/${bookObjToUpdate._id}`
+    
+      let updatedBook = await axios.put(url, bookObjToUpdate._id)
+    
+      //TODO: Set state with the return from axios
+      let updatedBookArray = this.state.books.map(existingBook => {
+        return existingBook._id === bookObjToUpdate._id
+        ? updatedBook.data
+        : existingBook
+      })
+    
+      this.setState({
+        books: updatedBookArray
+      })
+      
+    } catch (error) {
+      console.log(error.message);
     }
   }
 
@@ -108,6 +133,7 @@ class BestBooks extends React.Component {
                       status={book.status}
                       deleteBooks={this.deleteBook(book._id)}
                       _id={book._id}
+                      _v={book._v}
                     />
                   </Carousel.Item>
                 )
@@ -134,27 +160,3 @@ export default BestBooks;
 
 
 
-// *** UPDATE CATS IN STATE USING AXIOS TO HIT BACKEND ***
-updateCat = async (catObjToUpdate) => {
-
-  try {
-    //TODO: url for axios
-    let url = `${process.env.REACT_APP_SERVER}/cats/${catObjToUpdate._id}`
-  
-    let updatedCat = await axios.put(url, catObjToUpdate._id)
-  
-    //TODO: Set state with the return from axios
-    let updatedCatArray = this.state.cats.map(existingCat => {
-      return existingCat._id === catObjToUpdate._id
-      ? updatedCat.data
-      : existingCat
-    })
-  
-    this.setState({
-      cats: updatedCatArray
-    })
-    
-  } catch (error) {
-    console.log(error.message);
-  }
-}
