@@ -27,6 +27,7 @@ class BookCarousel extends React.Component {
   }
 
   render() {
+    // console.log('BookCarousel props ', this.props);
     return (
       <>
         <img
@@ -40,7 +41,7 @@ class BookCarousel extends React.Component {
           <p>{this.props.status}</p>
         </Carousel.Caption>
 
-        <Button variant="danger" id='deleteBtn' onClick={() => { this.props.deleteBooks(this.props._id) }}>Delete</Button>
+        <Button variant="danger" id='deleteBtn' onClick={() => { this.props.deleteBook(this.props._id) }}>Delete</Button>
         
         <Modal show={this.state.showUpdateForm} onHide={() => { this.setState({ showUpdateForm: false }) }}>
 
