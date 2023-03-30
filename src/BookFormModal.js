@@ -19,7 +19,7 @@ class BookFormModal extends React.Component {
     return (
       <>
         <Button variant="secondary" onClick={() => { this.setState({ modalShow: true }) }}>
-          Add a Book Here
+          Add Book
         </Button>
 
         <Modal show={this.state.modalShow} onHide={() => { this.setState({ modalShow: false }) }}>

@@ -4,13 +4,17 @@ import Container from 'react-bootstrap/Container'
 import Carousel from 'react-bootstrap/Carousel';
 import BookCarousel from './BookCarousel.js';
 import BookFormModal from './BookFormModal.js';
+import UpdateBookForm from './UpdateBookForm.js';
+
 
 
 class BestBooks extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      books: []
+      books: [],
+      showUpdateModal: false,
+      selectedBook: {}
     }
   }
 
@@ -49,12 +53,13 @@ class BestBooks extends React.Component {
   
   // *** UPDATE BOOK IN STATE USING AXIOS TO HIT BACKEND ***
   updateBook = async (bookObjToUpdate) => {
+    console.log(bookObjToUpdate);
   
     try {
       //TODO: url for axios
       let url = `${process.env.REACT_APP_SERVER}/books/${bookObjToUpdate._id}`
     
-      let updatedBook = await axios.put(url, bookObjToUpdate._id)
+      let updatedBook = await axios.put(url, bookObjToUpdate)
     
       //TODO: Set state with the return from axios
       let updatedBookArray = this.state.books.map(existingBook => {
@@ -64,7 +69,8 @@ class BestBooks extends React.Component {
       })
     
       this.setState({
-        books: updatedBookArray
+        books: updatedBookArray,
+        showUpdateModal: false,
       })
       
     } catch (error) {
@@ -84,7 +90,7 @@ class BestBooks extends React.Component {
       description: event.target.description.value,
       status: event.target.status.checked,
     }
-    console.log('New Book Form >>> ', bookObj);
+    // console.log('New Book Form >>> ', bookObj);
     this.postBook(bookObj);
   }
 
@@ -95,7 +101,7 @@ class BestBooks extends React.Component {
       let url = `${process.env.REACT_APP_SERVER}/books`
       // *** On a post, we pass in 2 args to axios, 1st is the url, 2nd is the data that will go on the request.body
       let createdBook = await axios.post(url, bookObj)
-      console.log(createdBook.data);
+      // console.log(createdBook.data);
       this.setState({
         books: [...this.state.books, createdBook.data]
       })
@@ -103,6 +109,14 @@ class BestBooks extends React.Component {
     } catch (error) {
       console.log(error.message)
     }
+  }
+
+  openUpdateModal = (bookObj) => {
+    this.setState({showUpdateModal: true, selectedBook: bookObj})
+  }
+
+  closeUpdateModal = () => {
+    this.setState({showUpdateModal: false})
   }
 
   // *** REACT LIFECYCLE METHOD*** When app renders, calls the provided function
@@ -131,9 +145,10 @@ class BestBooks extends React.Component {
                       title={book.title}
                       description={book.description}
                       status={book.status}
-                      deleteBooks={this.deleteBook(book._id)}
+                      deleteBook={this.deleteBook}
                       _id={book._id}
-                      _v={book._v}
+                      openUpdateModal={this.openUpdateModal}
+                      book={book}
                     />
                   </Carousel.Item>
                 )
@@ -148,6 +163,13 @@ class BestBooks extends React.Component {
 
           <BookFormModal
           handleBookSubmit={this.handleBookSubmit}
+          />
+
+          <UpdateBookForm
+          updateBook={this.updateBook}
+          showUpdateModal={this.state.showUpdateModal}
+          closeUpdateModal={this.closeUpdateModal}
+          selectedBook={this.state.selectedBook}
           />
 
       </>
