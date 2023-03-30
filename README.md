@@ -10,6 +10,8 @@ Lab 11 Overview:
 
 Lab 12 Overview: We are going to add the ability for a user to add and delete book objects through the UI on our frontend. We will use CRUD, REST and Mongoose methods together.
 
+Lab 13 Overview: In this lab, we will complete our full stack CRUD application by adding an UPDATE route. We will add a button to each book that, when clicked, will display a form where the user can change information about that book. That information will be sent to the server where it will replace what’s already in the database for that record.
+
 ## Getting Started
 <!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
 
@@ -34,6 +36,8 @@ Lab 12 Overview: We are going to add the ability for a user to add and delete bo
 27 March 2023 1720 - Frontend requirements met. Finished Lab 11.
 28 March 2023 1300 - Starting Lab 12: Create/Delete of CRUD.
 28 March 2023 1830 - Finished Lab 12: lab requirements met.
+29 March 2023 1300 - Started Lab 13: Update CRUD.
+29 March 2023 1745 - Finished Lab 13: Lab requirements met.
 
 ## Estimates
 
@@ -52,11 +56,11 @@ Finish Time: 1630
 Actual Time Needed to Complete: 3.5 hours
 
 Lab #: 13
-Name of Feature:
-Estimate of Time Needed to Complete:
-Start Time:
-Finish Time:
-Actual Time Needed to Complete:
+Name of Feature: Update CRUD
+Estimate of Time Needed to Complete: 6 hours
+Start Time: 1300
+Finish Time: 1745
+Actual Time Needed to Complete: 5.5 hours
 
 Lab #: 14
 Name of Feature:
